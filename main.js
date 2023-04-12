@@ -17,6 +17,7 @@ var hizoClick = false;
 var casillerosSinDescubrir;
 
 
+
 function setup()
 {
   createCanvas(500, 500);   //crea un lienzo o panel donde estará el juego. El primer parámetro es el ancho y el segundo el alto del lienzo.
@@ -27,13 +28,11 @@ function setup()
   COLOR_CASILLERO_CON_MINA = color("#FF0000");
   COLOR_CASILLERO_SIN_MINA = color("#1CC932");
   COLOR_CASILLERO_MARCADO = color("#278EF2");
+  casillerosSinDescubrir = FILAS * COLUMNAS;
 
   // Modificar/completar
   ponerMinaCasillero(0, 0);
-  if(casillerosSinDescubrir == 0)
-      {
-        ganoElJuego();
-      }
+ 
   
 }
 
@@ -58,7 +57,9 @@ function draw() {
       {
         pintarCasillero(columnaPresionada, filaPresionada, COLOR_CASILLERO_MARCADO);
       }
-      
+      if(ganoElJuego()){
+        ganar();
+      }
       
         
     
@@ -67,17 +68,24 @@ function draw() {
  
   hizoClick = false;  //Indico que ya "procesé" el click del usuario. NO modificar
   }
+  
 }
 
 
 function ganoElJuego()
 {
-  return false;   //Esto hace que NUNCA gane el juego. Modificar/completar
+  if(casillerosSinDescubrir == CANTIDAD_MINAS)
+  return true;
+ 
 }
-
 function ponerMinasTablero()
+
 {
-  // Modificar/completar
+  
+  for (let contador = 0; contador < 10; contador++){
+    numeroAleatorio = floor(random(0, 100)); 
+    
+  }
 }
 
 function mostrarMinas()
@@ -87,5 +95,6 @@ function mostrarMinas()
 
 function contarMinasAlrededor(columna, fila)
 {
-  return 9;   //Esto hace que SIEMPRE cuente 9 minas alrededor. Modificar/completar
+  return 9; 
+    //Esto hace que SIEMPRE cuente 9 minas alrededor. Modificar/completar
 }
