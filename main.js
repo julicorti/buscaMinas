@@ -44,6 +44,7 @@ function draw() {
     {
       if(tieneMinaCasillero(columnaPresionada, filaPresionada))
       {
+        mostrarMinas();
         perder();
         
 
@@ -89,19 +90,25 @@ function ponerMinasTablero()
     while(tieneMinaCasillero (x, y)){ //Comprueba que no se repita la posicion de la mina
       x = floor(random(0, 10));
       y = floor(random(0, 10)); 
-      console.log(x, y)
     }
     
+    for(let i = 0; i < CANTIDAD_MINAS; i++){ 
     ponerMinaCasillero(x, y)
-    console.log(x, y)
-        
+  }
     
   }
 }
 
 function mostrarMinas()
 {
-  pintarCasillero(columnaPresionada, filaPresionada, COLOR_CASILLERO_CON_MINA);
+  for(let i = 0; i < 10; i++){
+    for(let j = 0; j < 10; j++){
+      if(tieneMinaCasillero(i, j)){
+        pintarCasillero(i, j,  COLOR_CASILLERO_CON_MINA);
+      }
+    }
+  }
+  
 }
 
 function contarMinasAlrededor(columna, fila)
@@ -113,6 +120,7 @@ function contarMinasAlrededor(columna, fila)
       if(tieneMinaCasillero(columna + x, fila + y)){//Si hay una mina en un casillero vecino la suma
         minasTotal++
       }
+     
     }
   }
   return minasTotal;
