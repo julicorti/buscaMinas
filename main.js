@@ -62,12 +62,6 @@ function draw() {
       if(ganoElJuego()){
         ganar();
       }
-      
-        
-    
-    
-  
- 
   hizoClick = false;  //Indico que ya "procesé" el click del usuario. NO modificar
   }
   
@@ -103,7 +97,7 @@ function mostrarMinas()
 {
   for(let i = 0; i < 10; i++){
     for(let j = 0; j < 10; j++){
-      if(tieneMinaCasillero(i, j)){
+      if(tieneMinaCasillero(i, j)){ 
         pintarCasillero(i, j,  COLOR_CASILLERO_CON_MINA);
       }
     }
