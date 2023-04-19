@@ -79,24 +79,23 @@ function ponerMinasTablero()
 {
   
   for (let contador = 0; contador < CANTIDAD_MINAS; contador++){ //Para colocar la cantidad de minas
-    x = floor(random(0, 10)); //Poner numero aleatorio en la posicion x
-    y = floor(random(0, 10)); //Poner numero aleatorio en la posicion y
+    x = floor(random(0, COLUMNAS)); //Poner numero aleatorio en la posicion x
+    y = floor(random(0, FILAS)); //Poner numero aleatorio en la posicion y
     while(tieneMinaCasillero (x, y)){ //Comprueba que no se repita la posicion de la mina
       x = floor(random(0, 10));
       y = floor(random(0, 10)); 
     }
-    
-    for(let i = 0; i < CANTIDAD_MINAS; i++){ 
+    console.log();
     ponerMinaCasillero(x, y)
   }
     
-  }
+  
 }
 
 function mostrarMinas()
 {
-  for(let i = 0; i < 10; i++){
-    for(let j = 0; j < 10; j++){
+  for(let i = 0; i < COLUMNAS; i++){
+    for(let j = 0; j < FILAS; j++){
       if(tieneMinaCasillero(i, j)){ 
         pintarCasillero(i, j,  COLOR_CASILLERO_CON_MINA);
       }
@@ -107,8 +106,8 @@ function mostrarMinas()
 
 function contarMinasAlrededor(columna, fila)
 {
-  minasTotal = 0
-  for (let y = -1; y <= 1; y++){ //Comprueba si hay una mina arriba o abajo 
+  let minasTotal = 0;
+for (let y = -1; y <= 1; y++){ //Comprueba si hay una mina arriba o abajo 
     for (let x = -1; x <= 1; x++){ //Comprueba si hay una mina a la derecha o izquierda
       
       if(tieneMinaCasillero(columna + x, fila + y)){//Si hay una mina en un casillero vecino la suma
